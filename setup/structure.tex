@@ -1,0 +1,118 @@
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage[backend=biber, style = numeric]{biblatex}
+\addbibresource{Resurgence.bib}
+\usepackage{amsmath,amsfonts,amsthm} % Math packages for equations
+\usepackage{mathtools} % xarrow
+\usepackage{todonotes}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usepackage{epigraph}
+\usepackage{physics}
+\usepackage{cprotect} % verb in footnotes
+\usepackage{empheq}
+\usepackage{booktabs} % \toprule etc
+\usepackage{cancel} % \cancel
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{braket}
+\usepackage{wrapfig}
+
+%\usepackage{microtype} % Better typography
+
+\setlength {\marginparwidth }{2cm} 
+
+
+
+%----------------------------------------------------------------------------------------
+%	Theorems and Definitions
+%   https://tex.stackexchange.com/questions/45817/theorem-definition-lemma-problem-numbering
+%----------------------------------------------------------------------------------------
+
+\newtheoremstyle{break}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {}%                             % Body font
+  {}%                                     % Indent amount
+  {\itshape\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  {\newline}%                                    % Space after theorem head, ' ', or \newline
+  {}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\newtheoremstyle{nte}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {}%                             % Body font
+  {}%                                     % Indent amount
+  {\itshape}%                            % Theorem head font
+  {:}%                                    % Punctuation after theorem head
+  { }%                                    % Space after theorem head, ' ', or \newline
+  {}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+
+\newtheoremstyle{trm}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {}%                             % Body font
+  {}%                                     % Indent amount
+  {\itshape}%                            % Theorem head font
+  {:}%                                    % Punctuation after theorem head
+  {\newline}%                                    % Space after theorem head, ' ', or \newline
+  {}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{break}
+
+\renewenvironment{proof}{{\bf {Proof:} }}{\hfill $\Box$ \\} 
+\newtheorem{Theorem}{Theorem}[section] % reset theorem numbering for each chapter
+\newtheorem{definition}[Theorem]{Definition} % definition numbers are dependent on theorem numbers
+%\newtheorem{exmple}[Theorem]{Example} % same for example numbers
+\newtheorem{crllry}[Theorem]{Corollary} % same for example numbers
+%\newtheorem{proof}[theorem]{Proof} % 
+
+
+\theoremstyle{nte}
+\newtheorem*{nte}{Note}
+\newtheorem*{terminol}{Terminology}
+
+%\theoremstyle{trm}
+%\newtheorem*{terminology}{Terminology}
+
+
+%----------------------------------------------------------------------------------------
+%	EXAMPLE ENVIRONMENT
+%   https://tex.stackexchange.com/questions/21227/example-environment/21241
+%----------------------------------------------------------------------------------------
+\usepackage[most]{tcolorbox}
+\newcounter{examples}
+
+\def\exampletext{Example} % If English
+
+\NewDocumentEnvironment{example}{ O{} }
+{
+\colorlet{colexam}{red!55!black} % Global example color
+\newtcolorbox[use counter=examples]{examplebox}{%
+    % Example Frame Start
+    empty,% Empty previously set parameters
+    title={\exampletext: #1},% use \thetcbcounter to access the testexample counter text
+    % Attaching a box requires an overlay
+    attach boxed title to top left,
+       % Ensures proper line breaking in longer titles
+       minipage boxed title,
+    % (boxed title style requires an overlay)
+    boxed title style={empty,size=minimal,toprule=0pt,top=4pt,left=3mm,overlay={}},
+    coltitle=colexam,fonttitle=\bfseries,
+    before=\par\medskip\noindent,parbox=false,boxsep=0pt,left=3mm,right=0mm,top=2pt,breakable,pad at break=0mm,
+       before upper=\csname @totalleftmargin\endcsname0pt, % Use instead of parbox=true. This ensures parskip is inherited by box.
+    % Handles box when it exists on one page only
+    overlay unbroken={\draw[colexam,line width=.5pt] ([xshift=-0pt]title.north west) -- ([xshift=-0pt]frame.south west); },
+    % Handles multipage box: first page
+    overlay first={\draw[colexam,line width=.5pt] ([xshift=-0pt]title.north west) -- ([xshift=-0pt]frame.south west); },
+    % Handles multipage box: middle page
+    overlay middle={\draw[colexam,line width=.5pt] ([xshift=-0pt]frame.north west) -- ([xshift=-0pt]frame.south west); },
+    % Handles multipage box: last page
+    overlay last={\draw[colexam,line width=.5pt] ([xshift=-0pt]frame.north west) -- ([xshift=-0pt]frame.south west); },%
+    }
+\begin{examplebox}}
+{\end{examplebox}\endlist}

@@ -1,0 +1,45 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/a3c87ab/
+Abstract	chapters/abstract.tex	/^\\chapter*{Abstract}$/;"	c
+Introduction	chapters/intro.tex	/^\\chapter{Introduction}$/;"	c
+Lectures on Resurgence and Transseries	README.md	/^Lectures on Resurgence and Transseries$/;"	c
+aniceto_nonperturbative_2015	Resurgence.bib	/^@article{aniceto_nonperturbative_2015,$/;"	a
+aniceto_primer_2019	Resurgence.bib	/^@article{aniceto_primer_2019,$/;"	a
+aniceto_resurgence_2013	Resurgence.bib	/^@article{aniceto_resurgence_2013,$/;"	a
+bender_advanced_1999	Resurgence.bib	/^@book{bender_advanced_1999,$/;"	b
+bender_anharmonic_1969	Resurgence.bib	/^@article{bender_anharmonic_1969,$/;"	a
+bender_anharmonic_1973	Resurgence.bib	/^@article{bender_anharmonic_1973,$/;"	a
+bender_generalized_1970	Resurgence.bib	/^@article{bender_generalized_1970,$/;"	a
+bender_perturbation_1978	Resurgence.bib	/^@article{bender_perturbation_1978,$/;"	a
+berry_infinity_1993	Resurgence.bib	/^@article{berry_infinity_1993,$/;"	a
+chapters/abstract	ResurgenceLectures.tex	/^\\include{chapters\/abstract}$/;"	i
+chapters/intro	ResurgenceLectures.tex	/^\\include{chapters\/intro}$/;"	i
+costin_physical_2020	Resurgence.bib	/^@article{costin_physical_2020,$/;"	a
+dilaton_what_2016	Resurgence.bib	/^@misc{dilaton_what_2016,$/;"	n
+dorigoni_introduction_2015	Resurgence.bib	/^@article{dorigoni_introduction_2015,$/;"	a
+dunne_uniform_2014	Resurgence.bib	/^@article{dunne_uniform_2014,$/;"	a
+dunne_what_2015	Resurgence.bib	/^@article{dunne_what_2015,$/;"	a
+fiziev_exact_2007	Resurgence.bib	/^@article{fiziev_exact_2007,$/;"	a
+hatsuda_quasinormal_2020	Resurgence.bib	/^@article{hatsuda_quasinormal_2020,$/;"	a
+heller_hydrodynamic_2020	Resurgence.bib	/^@article{heller_hydrodynamic_2020,$/;"	a
+heller_hydrodynamics_2015	Resurgence.bib	/^@article{heller_hydrodynamics_2015,$/;"	a
+jentschura_instantons_2004	Resurgence.bib	/^@article{jentschura_instantons_2004,$/;"	a
+klaczynski_haags_2016	Resurgence.bib	/^@article{klaczynski_haags_2016,$/;"	a
+marino_lectures_2014	Resurgence.bib	/^@article{marino_lectures_2014,$/;"	a
+marino_lectures_2014-1	Resurgence.bib	/^@article{marino_lectures_2014-1,$/;"	a
+noauthor_l22_nodate	Resurgence.bib	/^@misc{noauthor_l22_nodate,$/;"	n
+noauthor_monomial_2020	Resurgence.bib	/^@misc{noauthor_monomial_2020,$/;"	n
+noauthor_phys_nodate	Resurgence.bib	/^@misc{noauthor_phys_nodate,$/;"	n
+noauthor_resurgence_nodate	Resurgence.bib	/^@misc{noauthor_resurgence_nodate,$/;"	n
+pisani_lee-yang_1993	Resurgence.bib	/^@article{pisani_lee-yang_1993,$/;"	a
+requests	ResurgenceLectures.run.xml	/^<!DOCTYPE requests [$/;"	r
+romatschke_simple_2019	Resurgence.bib	/^@article{romatschke_simple_2019,$/;"	a
+sauzin_introduction_2014	Resurgence.bib	/^@article{sauzin_introduction_2014,$/;"	a
+sulejmanpasic_aspects_2016	Resurgence.bib	/^@article{sulejmanpasic_aspects_2016,$/;"	a
+sulejmanpasic_aspects_2016-1	Resurgence.bib	/^@article{sulejmanpasic_aspects_2016-1,$/;"	a

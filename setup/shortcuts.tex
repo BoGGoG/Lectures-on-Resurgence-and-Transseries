@@ -1,0 +1,81 @@
+%\newcommand{\diff}{\mathrm{d}}
+\DeclareMathOperator{\diff}{d\!}
+\DeclareMathOperator{\dif}{d}
+\DeclareMathOperator{\sign}{sign}
+\newcommand{\diag}{\mathop{\mathrm{diag}}}
+\newcommand{\group}{\mathfrak{g}}
+\newcommand{\kb}{k_\text{B}}
+\newcommand{\Lie}{\mathcal{L}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calZ}{\mathcal{Z}}
+\newcommand{\hb}{\hbar}
+\newcommand{\calD}{\mathcal{D}}
+
+
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+\newcommand*\Evall[3]{\left.#1\right\rvert_{#2}^{#3}}
+\newcommand*\Eval[2]{\left.#1\right\rvert_{#2}}
+\newcommand*\pDiffAt[3]{\Eval{\frac{\partial {#1}}{\partial {#2}}}{#3}}
+\newcommand{\Vev}[1]{\langle{#1}\rangle}
+
+\newcommand{\ie}{\textit{i.e.}\ }
+
+%%%%%%%%%%%%%%%%%%%%%%% THEOREMS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{break}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {}%                             % Body font
+  {}%                                     % Indent amount
+  {\itshape\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  {\newline}%                                    % Space after theorem head, ' ', or \newline
+  {}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\newtheoremstyle{nte}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {}%                             % Body font
+  {}%                                     % Indent amount
+  {\itshape}%                            % Theorem head font
+  {:}%                                    % Punctuation after theorem head
+  { }%                                    % Space after theorem head, ' ', or \newline
+  {}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+
+\newtheoremstyle{trm}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {}%                             % Body font
+  {}%                                     % Indent amount
+  {\itshape}%                            % Theorem head font
+  {:}%                                    % Punctuation after theorem head
+  {\newline}%                                    % Space after theorem head, ' ', or \newline
+  {}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{break}
+
+\renewenvironment{proof}{{\bf {Proof:} }}{\hfill $\Box$ \\} 
+\newtheorem{theorem}{Theorem}[section] % reset theorem numbering for each chapter
+\newtheorem{defn}[theorem]{Definition} % definition numbers are dependent on theorem numbers
+\newtheorem{exmp}[theorem]{Example} % same for example numbers
+\newtheorem{corollary}[theorem]{Corollary} % same for example numbers
+%\newtheorem{proof}[theorem]{Proof} % 
+
+
+\theoremstyle{nte}
+\newtheorem*{note}{Note}
+\newtheorem*{terminology}{Terminology}
+
+\theoremstyle{trm}
+
+
+\setlength{\epigraphwidth}{0.5\textwidth}
