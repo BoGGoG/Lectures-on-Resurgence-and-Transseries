@@ -1,0 +1,167 @@
+\documentclass{exam}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amsthm} % Math packages for equations
+\usepackage{tikz}
+
+\DeclareMathOperator{\diff}{d}
+
+\title{Lectures on Resurgence and Trans-Series}
+\author{Marco Knipfer, University of Alabama}
+\date{Week 3, \today}
+
+\begin{document}
+\maketitle
+
+
+\begin{questions}
+    \question (\textbf{$\lambda \phi^4$ - integral})\\
+    Let's look at the integral
+    \begin{equation}
+        Z(\lambda) = \int_{-\infty}^\infty \diff\! x\, e^{-x^2 - \lambda x^4}\,.
+    \end{equation}
+    \begin{parts}
+        \part (\textbf{Asymptotic expansion})
+        Expand the $\exp(-\lambda x^4)$ part in a power series around $\lambda = 0$,
+        add a spurious factor $a$ to the $x^2$ part (in the end $a\to 1$)
+        and change $x^4 \to \partial_a^2$.
+        Finally, do the Gaussian integral to get
+        \begin{equation}
+            Z(\lambda) = \sum_{k = 0}^{\infty} \frac{(-\lambda)^k}{k!} 
+            \partial_a^{2n} \sqrt{\frac{\pi}{a}} \bigg|_{a\to 1}\,.
+            \label{eq:derivatives}
+        \end{equation}
+
+        \part (\textbf{Performing the derivative}) Show that the above eq.(\ref{eq:derivatives}) can be written
+        in the form of an oscillating sum,
+        \begin{equation}
+            Z(\lambda) = \sum_{k = 0}^{\infty} \sqrt{\pi}
+            \frac{(4k)!}{2^{4k} (2k)! k!} (-\lambda)^k =
+            \sum_{k=0}^\infty c_k (-\lambda)^k\,.
+            \label{eq:lambdaphi4expansion}
+        \end{equation}
+
+        \part Use Stirling's approximation
+        \begin{equation}
+            k! \approx \frac{1}{\sqrt{2} \pi} 4^k k!, \quad (z \gg 1)\,,
+        \end{equation}
+        to show that
+        \begin{equation}
+            \sqrt{\pi} \frac{(4k)!}{2^{4k} (2k)! k!} \approx \frac{1}{\sqrt{2\pi}} 4^k k!\,.
+        \end{equation}
+        Why does this mean that the expansion eq.~(\ref{eq:lambdaphi4expansion}) diverges?
+
+        \part (\textbf{Gevrey order}) What is the Gevrey order of the resulting sum?
+        \part (\textbf{Comparison with exact result and optimal truncation}) The integral can actually be performed analytically,
+        \begin{equation}
+            Z(\lambda) = \frac{e^{\frac{1}{8\lambda}}}{2\sqrt{\lambda}} K_{1 / 4}\left(\frac{1}{8\lambda}\right)\,,
+        \end{equation}
+        with the modified Bessel function of the second kind $K_n(x)$.
+        Take eq.~(\ref{eq:lambdaphi4expansion}) and $\lambda = \frac{1}{50}$.
+        Truncate the sum~(\ref{eq:lambdaphi4expansion}) at $N$ and let's call this truncated sum
+        $Z(\lambda; N)$. Plot $Z(\frac{1}{50}, N)$ against $N$ for $N = 1\ldots 40$ and also
+        show the exact value $Z(\frac{1}{50})$.
+        For $c_n \sim A^{-n} n!$ the optimal truncation is around\footnote{take some closest integer, I don't think it matters if you round up or down, since it's only an estimate anyways.}
+        \begin{equation}
+            N_* = \left|\frac{A}{\lambda} \right|\,.
+        \end{equation}
+        Do you find this here?
+        \part (\textbf{Perturbative ambiguity}) The closest we can get to the exact result by optimal truncation scales like
+        \begin{equation}
+            \epsilon(\lambda) \sim e^{-|A / \lambda|}\,.
+        \end{equation}
+        Why can't we just add a term like this in the power series~(\ref{eq:lambdaphi4expansion})
+        to get rid of the errors?
+    \end{parts}
+    
+    \question (\textbf{Analytic Continuation})
+    In this question we will look at the function
+    \begin{equation}
+        f(z) = \sum_{n = 0}^\infty z^n,\quad z \in \mathbb{C}\,.
+        \label{eq:f}
+    \end{equation}
+    \begin{parts}
+        \part (\textbf{Radius of Convergence})
+        Using the ratio test find the radius of convergence for $f(z)$. 
+        \part (\textbf{Expansion around $z = -1 / 2$}) The function $f(z)$ can actually be represented as
+        \begin{equation}
+            f_\text{master}(z) = \frac{1}{1 - z}\,,
+            \label{eq:fmaster}
+        \end{equation}
+        which has a singularity at $z=1$.
+        This representation is called \emph{master representation}\footnote{at least I think it is. If it is not, it is now.}, because it works everywhere
+        except at $z=1$. It is the analytic continuation of $f(z)$ to all of $\mathbb{C}\backslash \{1\}$.
+        Eq.~(\ref{eq:f}) is the expansion of $f_\text{master}(z)$ around $z=0$.
+        Expand $f_\text{master}$ around $z = -\frac{1}{2}$ and calculate the radius of convergence
+        using the ratio test.
+        \part (\textbf{Without Master Representation}) Without using $f_\text{master}$, calculate the Taylor series of $f(z)$ around
+        $z = -\frac{1}{2}$ by taking the derivatives of the series.
+        You should get the same as above.
+
+        Tipp: Plug the series you get for $f^{(n)}(- \frac{1}{2})$ into Mathematica.
+        \part (\textbf{Calculating $2 + 4 + 8 + \ldots$})
+        In principle, how would you analytically continue $f(z)$ to $z = 2$ if you did not know the
+        master representation?
+        Calculate $f_\text{master}(2)$. 
+        Does this make sense in terms of the original function~(\ref{eq:f})?
+
+        Tipp: There is only the singularity at $z = 1$ and every expansion around any point
+        $z_* \neq 1$ will have radius of convergence until $z = 1$, see the figure below.
+
+        \begin{center}
+        \begin{tikzpicture}
+            \tikzset{
+                cross/.pic = {
+                    \draw[rotate = 45] (-#1,0) -- (#1,0);
+                    \draw[rotate = 45] (0,-#1) -- (0, #1);
+                }
+            }
+            % Configurable parameters
+            \def\gap{0}
+            \def\bigradius{3}
+            \def\littleradius{0.5}
+
+            % Axes
+            \draw [help lines,->] (-1.25*\bigradius, 0) -- (1.25*\bigradius,0);
+            \draw [help lines,->] (0, -1.25*\bigradius) -- (0, 1.25*\bigradius);
+            % Red path
+            \draw (0,0) circle (1); 
+            \draw (-0.5,0) circle (1.5); 
+            \draw (0.5,-1) circle (1.1); 
+            \draw (1.2,-0.5) circle (0.5); 
+            \draw (1,0) pic {cross=3pt}; 
+        \end{tikzpicture}   
+        \end{center}
+        
+    \end{parts}
+
+    
+
+    %\question (\textbf{$\lambda \phi^4$ - integral})\\
+    %In this exercise we will examine the integral
+    %\begin{align}
+        %I(\hbar) &= \frac{1}{2\pi} \int_\Gamma \diff z e^{-\frac{1}{\hbar} V(z)}\,,\\
+        %V(z) &= \frac{1}{2} z^2 - \frac{\lambda}{4!} z^4\,,
+    %\end{align}
+    %where $\Gamma$ is some contour in the complex plane.
+
+    %\begin{parts}
+        %\part (\textbf{Expansion in QFT-manner})
+        %\begin{itemize}
+            %\item Make a change of variables $z_\text{new} := \frac{z}{\sqrt{\hbar}}$ and
+                %$x := \lambda \hbar$ to get
+                %\begin{equation}
+                    %Z(x) = \frac{\sqrt{\hbar}}{2\pi}\int_\Gamma \diff z e^{- \frac{1}{2} z^2 + \frac{x}{4!}z^4}\,.
+                %\end{equation}
+            %\item 
+            %\item Calculate the saddle points $\rho(z_*) = 0$ of the new exponent 
+                %$\rho(z) = - \frac{1}{2} z^2 + \frac{x}{24}z^4$.
+                %First we will make an expansion around the \emph{perturbative} saddle
+                %point $z_0 = 0$.
+        %\end{itemize}
+
+    %\end{parts}
+
+    
+\end{questions}
+
+\end{document}
