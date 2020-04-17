@@ -18,9 +18,11 @@
     Let's look at the integral
     \begin{equation}
         Z(\lambda) = \int_{-\infty}^\infty \diff\! x\, e^{-x^2 - \lambda x^4}\,.
+        \label{eq:lambdaphi4}
     \end{equation}
     \begin{parts}
         \part (\textbf{Asymptotic expansion})
+        \label{part:asymptExp}
         Expand the $\exp(-\lambda x^4)$ part in a power series around $\lambda = 0$,
         add a spurious factor $a$ to the $x^2$ part (in the end $a\to 1$)
         and change $x^4 \to \partial_a^2$.
@@ -40,7 +42,7 @@
             \label{eq:lambdaphi4expansion}
         \end{equation}
 
-        \part Use Stirling's approximation
+        \part (\textbf{Large order Behavior}) Use Stirling's approximation
         \begin{equation}
             k! \approx \frac{1}{\sqrt{2} \pi} 4^k k!, \quad (z \gg 1)\,,
         \end{equation}
@@ -50,7 +52,12 @@
         \end{equation}
         Why does this mean that the expansion eq.~(\ref{eq:lambdaphi4expansion}) diverges?
 
-        \part (\textbf{Gevrey order}) What is the Gevrey order of the resulting sum?
+        \part (\textbf{Optional: Alternative derivation of the series})
+        Don't use the "derivative trick" from part~\ref{part:asymptExp}, but just expand the
+        exponential $e^{-\lambda x^4}$, exchange sum and integral and solve the integral by
+        substitution and use of the definition of the $\Gamma$-function/factorial or just type it into Mathematica.
+
+        %\part (\textbf{Gevrey order}) What is the Gevrey order of the resulting series?
         \part (\textbf{Comparison with exact result and optimal truncation}) The integral can actually be performed analytically,
         \begin{equation}
             Z(\lambda) = \frac{e^{\frac{1}{8\lambda}}}{2\sqrt{\lambda}} K_{1 / 4}\left(\frac{1}{8\lambda}\right)\,,
@@ -71,6 +78,9 @@
         \end{equation}
         Why can't we just add a term like this in the power series~(\ref{eq:lambdaphi4expansion})
         to get rid of the errors?
+        \part (\textbf{Scaling of $\lambda$}) What happens to the instanton action $A$ if you
+        scale $\lambda$ in eq.~(\ref{eq:lambdaphi4}) to $\alpha \lambda$, $\alpha >0$?
+        What happens to the perturbative ambiguity?
     \end{parts}
     
     \question (\textbf{Analytic Continuation})
