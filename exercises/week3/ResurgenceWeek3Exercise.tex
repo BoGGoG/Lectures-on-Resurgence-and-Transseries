@@ -29,7 +29,7 @@
         Finally, do the Gaussian integral to get
         \begin{equation}
             Z(\lambda) = \sum_{k = 0}^{\infty} \frac{(-\lambda)^k}{k!} 
-            \partial_a^{2n} \sqrt{\frac{\pi}{a}} \bigg|_{a\to 1}\,.
+            \partial_a^{2k} \sqrt{\frac{\pi}{a}} \bigg|_{a\to 1}\,.
             \label{eq:derivatives}
         \end{equation}
 
@@ -49,8 +49,11 @@
         to show that
         \begin{equation}
             \sqrt{\pi} \frac{(4k)!}{2^{4k} (2k)! k!} \approx \frac{1}{\sqrt{2\pi}} 4^k k!\,.
+            \label{eq:cnapprox}
         \end{equation}
         Why does this mean that the expansion eq.~(\ref{eq:lambdaphi4expansion}) diverges?
+
+        Note: I think it's actually $(k-1)!$, but that still scales like $k!$.
 
         \part (\textbf{Optional: Alternative derivation of the series})
         Don't use the "derivative trick" from part~\ref{part:asymptExp}, but just expand the
@@ -67,7 +70,7 @@
         Truncate the sum~(\ref{eq:lambdaphi4expansion}) at $N$ and let's call this truncated sum
         $Z(\lambda; N)$. Plot $Z(\frac{1}{50}, N)$ against $N$ for $N = 1\ldots 40$ and also
         show the exact value $Z(\frac{1}{50})$.
-        For $c_n \sim A^{-n} n!$ the optimal truncation is around\footnote{take some closest integer, I don't think it matters if you round up or down, since it's only an estimate anyways.}
+        For $\sum_{n=0}^\infty a_n \lambda^n$, $a_n \sim A^{-n} n!$ the optimal truncation is around\footnote{take some closest integer, I don't think it matters if you round up or down, since it's only an estimate anyways.}
         \begin{equation}
             N_* = \left|\frac{A}{\lambda} \right|\,.
         \end{equation}
