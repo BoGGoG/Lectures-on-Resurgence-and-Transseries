@@ -1,0 +1,136 @@
+\documentclass{exam}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amsthm} % Math packages for equations
+\usepackage{tikz}
+\usepackage{url}
+
+\DeclareMathOperator{\diff}{d}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calL}{\mathcal{L}}
+
+\title{Lectures on Resurgence and Trans-Series}
+\author{Marco Knipfer, University of Alabama}
+\date{Week 4, \today}
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+    \question (\textbf{Borel Summation of the $\lambda \phi^4$ Integral})\\
+    The integral
+    \begin{equation}
+        Z(\lambda) = \int_{-\infty}^\infty \diff\!x\, e^{-x^2 - \lambda x^4}
+    \end{equation}
+    has the analytic solution
+    \begin{equation}
+        Z(\lambda)_\text{analytic} =
+        \frac{e^{\frac{1}{8 \lambda }} K_{\frac{1}{4}}\left(\frac{1}{8 \lambda }\right)}{2 \sqrt{\lambda }}
+    \end{equation}
+    and, as we have checked on the last exercise sheet, the asymptotic series
+    \begin{equation}
+        Z(\lambda)_\text{asympt.} = \sqrt{\pi} \sum_{k=0}^\infty \frac{(4k)! (-1)^k}{2^{4k}(2k)!\, k!}\lambda^k\,.
+        \label{eq:Zasympt}
+    \end{equation}
+    \begin{parts}
+        \part ( \textsc{Mathematica}: \textbf{Asymptotic Expansion of the Analytic Solution})\\
+    Hankel came up with an asymptotic expansion for the \emph{modified Hankel function}\footnote{also called \emph{Basset function, modified Bessel function of the third kind and Macdonald function}}
+        $K_\alpha(z)$,
+        \begin{equation}
+            K_\alpha(z) \sim \sqrt{\frac{\pi}{2z}} e^{-z} \left(1 + \frac{4
+                    \alpha^2 - 1}{8z} + \frac{\left(4 \alpha^2 - 1\right)
+                    \left(4 \alpha^2 - 9\right)}{2! (8z)^2} + \frac{\left(4
+                        \alpha^2 - 1\right) \left(4 \alpha^2 - 9\right) \left(4
+            \alpha^2 - 25\right)}{3! (8z)^3} + \cdots \right) \,,
+            \label{eq:besselAsympt}
+        \end{equation}
+        for $\left|\arg z\right|<\frac{3\pi}{2}$.\footnote{\url{https://en.wikipedia.org/wiki/Bessel_function#Asymptotic_forms}}
+        Check that the asymptotic expansion of $Z(\lambda)_\text{analytic}$ is exactly
+        $Z(\lambda)_\text{asympt.}$. 
+        The easiest way is to let Mathematica expand $Z(\lambda)_\text{analytic}$ with
+        \verb!Series[ ]! and compare the first few terms.
+        Note that Mathematica knows about the asymptotic expansion~(\ref{eq:besselAsympt}).
+        \part (\textbf{Borel Transform})\\
+        The \emph{Borel transform} $\calB$ is defined as
+        \begin{align}
+            B &: z^{-1}\mathbb{C}[[z^{-1}]] \to \mathbb{C}[[\zeta]]\,,\\
+            B &: \tilde{\phi}(z) = \sum_{n=0}^{\infty} c_n z^{-n-1}
+            \mapsto \hat{\phi}(\zeta) = \sum_{n=0}^{\infty} c_n \frac{\zeta^n}{n!}\,.
+            \label{eq:BorelDef}
+        \end{align}
+        Note that we are working with $\lambda = \frac{1}{z}$ here.
+        The Borel transform is not defined for the constant ($k=0$) term in~(\ref{eq:Zasympt}).
+        Take out the constant term $\sqrt{\pi}$ and write
+        \begin{equation}
+            Z(\lambda)_\text{asympt} = \sqrt{\pi} + \tilde{Z}(\lambda)_\text{asympt}\,.
+            \label{eq:Ztild}
+        \end{equation}
+        Perform the borel transform $\calB[\tilde{Z}_\text{asympt}]$ by simply substituting
+        \begin{equation}
+            \lambda^k \to \frac{\zeta^{k-1}}{(k-1)!}\,.
+        \end{equation}
+        By the ratio test\footnote{\url{https://en.wikipedia.org/wiki/Ratio_test}},
+        figure out for what $\lambda$ $\calB[\tilde{Z}_\text{asympt.}](\zeta)$ converges.
+        \part (\textsc{Mathematica}: \textbf{Analytic Continuation})
+        Type $\calB[\tilde{Z}_\text{asympt.}]$ as an infinite sum into Mathematica,
+        it should be able to write it as a Hypergeometric function.
+        \begin{equation}
+            \calB[\tilde{Z}_\text{asympt}](\zeta) = 
+            -\frac{3\sqrt{\pi}}{4} \, _2F_1\left(\frac{5}{4},\frac{7}{4},2\bigg|-4 \zeta \right)\,.
+            \label{eq:borelAnalyticCont}
+        \end{equation}
+        The Hypergeometric function $_2F_1(a,b,c|z)$ has a singularity at $z=1$ and a branch cut from
+        $z=1$ to infinity.
+        Note that~(\ref{eq:borelAnalyticCont}) is the full analytic continuation of our Borel transform,
+        since it works on all of $\mathbb{C}\backslash\left\{-\frac{1}{4}\right\}$.
+        Is the singularity at $z=1$ a problem for the Laplace transform?
+
+        \part (\textsc{Mathematica}: \textbf{Inverse Borel Transform / Laplace Transform})\\
+        Perform the Laplace transform
+        \begin{equation}
+            \calL^\theta[\hat{\phi}](z) = \int_0^{e^{i\theta}\infty}\diff\! \zeta \,
+            e^{-z\zeta} \hat{\phi}(\zeta)\,,
+        \end{equation}
+        with $\theta = 0$ in Mathematica and compare the result with $Z(\lambda)_\text{analytic}$.
+        Don't forget to add the constant term again that we subtracted in~(\ref{eq:Ztild}).
+        
+        
+
+        
+
+    \end{parts}
+    
+    
+    
+
+    
+
+    %\question (\textbf{$\lambda \phi^4$ - integral})\\
+    %In this exercise we will examine the integral
+    %\begin{align}
+        %I(\hbar) &= \frac{1}{2\pi} \int_\Gamma \diff z e^{-\frac{1}{\hbar} V(z)}\,,\\
+        %V(z) &= \frac{1}{2} z^2 - \frac{\lambda}{4!} z^4\,,
+    %\end{align}
+    %where $\Gamma$ is some contour in the complex plane.
+
+    %\begin{parts}
+        %\part (\textbf{Expansion in QFT-manner})
+        %\begin{itemize}
+            %\item Make a change of variables $z_\text{new} := \frac{z}{\sqrt{\hbar}}$ and
+                %$x := \lambda \hbar$ to get
+                %\begin{equation}
+                    %Z(x) = \frac{\sqrt{\hbar}}{2\pi}\int_\Gamma \diff z e^{- \frac{1}{2} z^2 + \frac{x}{4!}z^4}\,.
+                %\end{equation}
+            %\item 
+            %\item Calculate the saddle points $\rho(z_*) = 0$ of the new exponent 
+                %$\rho(z) = - \frac{1}{2} z^2 + \frac{x}{24}z^4$.
+                %First we will make an expansion around the \emph{perturbative} saddle
+                %point $z_0 = 0$.
+        %\end{itemize}
+
+    %\end{parts}
+
+    
+\end{questions}
+
+\end{document}
