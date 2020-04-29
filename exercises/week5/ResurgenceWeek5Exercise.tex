@@ -1,0 +1,119 @@
+\documentclass{exam}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amsthm} % Math packages for equations
+\usepackage{tikz}
+\usepackage{url}
+
+\DeclareMathOperator{\diff}{d}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calL}{\mathcal{L}}
+
+\title{Lectures on Resurgence and Trans-Series}
+\author{Marco Knipfer, University of Alabama}
+\date{Week 4, Version: \today}
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+    \setcounter{question}{3}
+    \question (\textbf{More $\lambda \phi^4$ integral})\\
+    This time we want to calculate the ``quartic partition function''
+    \begin{equation}
+        Z(\hbar) = \frac{1}{2\pi} \int_\Gamma e^{-\frac{1}{\hbar} V(z)},
+    \end{equation}
+    with the potential
+    \begin{equation}
+        V(z) = \frac{1}{2} z^2 - \frac{\lambda}{4!} z^4\,,
+    \end{equation}
+    and a contour $\Gamma$ that starts at some ``point'' at (complex) infinity and ends at another
+    ``point'' at (complex) infinity.
+    Thus, for the integral to converge, one needs $\Re(V(z)) > 0$ as $z\to \infty$ along $\Gamma$.
+    
+    \begin{parts}
+        \part (\textsc{Warmup}: \textbf{Change of variables})\\
+    Right now we have two small parameters in the exponent, $\hbar$ and $\lambda$.
+    Find a change of variables so that
+    \begin{equation}
+        Z(x) = \frac{\sqrt{\hbar}}{2\pi}\int_\Gamma \diff\!z \, e^{-\frac{1}{2}z^2 + \frac{x}{4!}z^4}\,,
+        \quad x = \lambda \hbar\,.
+        \label{eq:lambdaphi4}
+    \end{equation}
+    This way we only have to care about $x$, which later will be complex.
+
+    \part (\textbf{Admissible directions for $\Gamma$})\\
+    Later we will have $x\in\mathbb{C}$, but right now assume $x\in\mathbb{R}^+$.
+    Find the directions $\alpha$ along which $V(z)>0$ for $z\to\infty$, by setting
+    \begin{equation}
+        z = r e^{i\alpha}\,.
+    \end{equation}
+    You should find four intervals for $\alpha$.
+    
+\part (\textbf{Conversion to differential equation})\\
+    Show that the integral~(\ref{eq:lambdaphi4}) can be written as an ordinary linear differential equation
+    \begin{equation}
+        16 x^2 Z''(x) + (32x - 24) Z'(x) + 3 Z(x) = 0\,.
+        \label{eq:ZDEQ}
+    \end{equation}
+    This can be done by plugging the definition of $Z(x)$, eq.~(\ref{eq:lambdaphi4}), into
+    the differential equation and showing that the integrand vanishes.
+    Use the fact that $\Re(V(x))\to +\infty$ for the start and end point of $\Gamma$.
+    Start by partially integrating the last summand and then continue partially integrating some terms.
+
+    Bonus points if you can tell me how to find the differential equation~(\ref{eq:ZDEQ}).
+
+    \part (\textbf{Series ansatz})
+    Make the ansatz
+    \begin{align}
+        Z(x) &= e^{-\frac{A}{x}} \Phi(x)\,,\\
+        \Phi(x) &= \sum_{n=0}^\infty Z_n x^n\,,
+    \end{align}
+    where $\Phi(x)$ is a formal power series (will be asymptotic).
+    Find the two ``solutions'' for $A$, let's call them $A_0$ and $A_1$.
+    \part (\textbf{Asymptotic series $\Phi(x)$})\\
+    Corresponding to $A_0$ and $A_1$ we get two different asymptotic series $\Phi_0(x)$ and $\Phi_1(x)$,
+    \begin{align}
+        \Phi_0(x) &\simeq \sum_{n=0}^\infty Z^{(0)}_n x^n\,,\quad Z^{(0)}_n =
+        \left( \frac{2}{3} \right)^n \frac{(4n)!}{2^{6n}(2n)! n!}Z_0^{(0)}\,,\\
+        \Phi_1(x) &\simeq \sum_{n=0}^\infty Z^{(1)}_n x^n\,,\quad Z^{(1)}_n =
+        (-1)^n\left( \frac{2}{3} \right)^n \frac{(4n)!}{2^{6n}(2n)! n!}Z_0^{(0)}\,,
+    \end{align}
+    with free parameters $Z^{(0)}_0$ and $Z^{(1)}_0$.
+    You can check that $\Phi_0$ and $\Phi_1$ are correct if you want.
+
+    Calculate the Gevrey order $\frac{1}{m}$ of $\Phi_0$ and $\Phi_1$ as well as
+    the instanton action $A$.
+    
+    \textsc{Reminders}:
+    \begin{itemize}
+        \item         A formal power series $\phi(z) = \sum_{n = 0}^{\infty} c_n z^{-n - 1}$ is of 
+        \emph{Gevrey order} $\frac{1}{m}$ if the large order coefficients are bounded by
+        \begin{equation}
+            |c_n| \leq \alpha A^{-n} (n!)^m\,,
+        \end{equation}
+        for some constants $\alpha$ and $A$, where $A$ is called ``instanton action''.
+        \item Stirling: $k! \sim \sqrt{2 \pi k} \left( \frac{k}{e} \right)^k$.
+        \item $n!$ scales just like $(n-1)!$ for large $n$.
+    \end{itemize}
+
+    \part (\textbf{Non-perturbative saddle points and instantons})\\
+    Find the saddle points of the exponent of the integrand of the original integral for $Z(x)$,
+    eq.~(\ref{eq:lambdaphi4}).
+    Calculate the \textit{instanton action} $A$ of those saddle points.
+
+    \textsc{Reminders:}
+    \begin{align*}
+        I &= \int_{\mathcal{C}} \diff\!z\,e^{-S(z)}\,,\\
+        S'(z_*) &= 0\,,\quad\text{defines the saddle point }z_*\,,\\
+        S(z_*) &= 0\,,\quad \text{instanton action}\,.
+    \end{align*}
+    
+    \textsc{Note:} There is a factor $\frac{1}{x}$ that is sometimes in the instanton action $A$ and
+    sometimes not. I don't know if this is not clear in the literature or if I just don't have
+    my definitions consistent.
+    \end{parts}
+
+    
+\end{questions}
+
+\end{document}
