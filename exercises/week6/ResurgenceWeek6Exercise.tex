@@ -1,0 +1,75 @@
+\documentclass{exam}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amsthm} % Math packages for equations
+\usepackage{tikz}
+\usepackage{url}
+
+\DeclareMathOperator{\diff}{d}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calL}{\mathcal{L}}
+
+\title{Lectures on Resurgence and Trans-Series}
+\author{Marco Knipfer, University of Alabama}
+\date{Week 6, Version: \today}
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+    \setcounter{question}{4}
+    \question (\textbf{Consistency of Borel Summation})\\
+    As a reminder: We had a series
+    \begin{align}
+        \tilde{\phi}(z) &= \sum_{n = 0}^\infty a_n z^{-n-1} \in z^{-1}\mathbb{C}[[z^{-1}]]\,,
+        \label{eq:phi}
+        \intertext{and the \emph{Borel transform} $\mathcal{B}$ was defined as}
+        \hat{\phi}(z) &= \mathcal{B}[\tilde{\phi}][\zeta] = \sum_{n=0}^\infty \frac{a_n}{n!}\zeta^n\,.
+        \intertext{If the series is asymptotic (and Gevrey type 1) the Borel transform will
+            have finite radius of convergence. After analytic continuation of the Borel transform
+        one uses the lateral Laplace transform} 
+        \mathcal{L}^\theta[\hat{\phi}](z) &= \int_0^{e^{i\theta}\infty} \diff\!\zeta\, e^{-z\zeta}\hat{\phi}(\zeta)\,,
+    \end{align}
+    which then (hopefully) gives a finite answer.
+    The upper bound $e^{i\theta}\infty$ means that one integrates in a straight line from
+    0 to infinity in the complex plane at an angle $\theta$ with the real axis.
+    
+    
+    \begin{parts}
+        \part (\textbf{Convergent series, $\theta=0$})\\
+        Let's start with a \emph{convergent} series $\tilde{\phi}(z)$ of the form~(\ref{eq:phi}).
+        Perform the Borel transform.
+        The Borel transform of course is convergent on all $\mathbb{C}$, since
+        already $\tilde{\phi}(z)$ was. Thus no analytic continuation is needed.
+        Perform the Laplace transform $\mathcal{L}^0$, make a change of variables
+        and use the definition of the Gamma function
+        \begin{equation}
+            \int_0^\infty \diff\!t\, t^{n-1}e^{-t} = \Gamma(n) = (n-1)!\,,
+        \end{equation}
+        to recover  the original convergent series.
+
+        \emph{Tipp:}
+        Since the Borel transform converges you are allowed to exchange sum and integral.
+
+        \part (\textbf{Convergent series, $\theta \neq 0$})\\
+        Again start with a \emph{convergent} series $\tilde{\phi}(z)$ of the
+        form~(\ref{eq:phi}) and perform the Borel transform.
+        This time perform the \emph{lateral Laplace transform} $\mathcal{L}^\theta$ with
+        $\theta\neq 0$.
+        A change of variables, $\zeta = t / z$, $\alpha = \arg(z)$, will give
+        \begin{equation}
+            \sum_{n=0}^\infty \frac{a_n}{n!} z^{-n-1}\int_0^{e^{i(\theta + \alpha)}\infty}\diff\!t\, e^{-t}t^n\,.
+        \end{equation}
+        Perform another change of variables such that the integral is from 0 to $\infty$.
+        The resulting integral can be calculated \emph{e.g.}\ with Mathematica.
+        Find the solution and a condition on $\theta$ for the integral to converge.
+        What is the condition for $\theta$ if $\alpha = \arg(z) = 0$?
+        What if $z<0$?
+    \end{parts}
+    \emph{Note:} If there is a singularity on the real line, we will have a jump when $\theta$
+    crosses it.
+    We are going to investigate this on the next exercise sheet.
+
+    
+\end{questions}
+
+\end{document}

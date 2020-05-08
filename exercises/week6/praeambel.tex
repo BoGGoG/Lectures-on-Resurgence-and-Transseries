@@ -1,0 +1,113 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LaTeX_Vorlage_Uebungsblatt.tex
+% Source: https://gist.github.com/Xennis/9637696
+% Documentation: https://gist.github.com/Xennis/9637696#file-readme-md
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper]{exercisesheet}
+
+% ------------------------- packages ------------------------------------------
+% encoding and language
+\usepackage[utf8]{inputenc}
+\usepackage[english,ngerman]{babel}
+
+% font
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% hyperlink (URL, etc.)
+\usepackage{hyperref}
+%\usepackage{cleveref}
+
+% citation
+\usepackage{cite}
+
+% math
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{nicefrac}
+
+% code
+\usepackage{listings}
+
+% pseudocode
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{algorithmicx}
+
+% graphics
+\usepackage{graphicx}
+\usepackage{tikz}                 % includes xcolor
+%\usetikzlibrary{arrows}
+%\usetikzlibrary{shapes}
+
+% custom
+%\usepackage{marvosym}
+%------------------------------------------------------------------------------
+
+
+% ------------------------ listings code style settings -----------------------
+% define colors
+\definecolor{colorNavy}{HTML}{00CC33}
+\definecolor{dkgreen}{RGB}{0,100,0}
+
+% code style
+\lstset{ %
+  %linewidth=\textwidth,
+  %linewidth=16cm,
+  language=JAVA,                  % the language of the code
+  %basicstyle=\footnotesize,      % the size of the fonts that are used for the code
+  numbers=left,                   % where to put the line-numbers
+  stepnumber=2,                   % the step between two line-numbers. If it's 1, each line 
+                                  % will be numbered
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  frame=single,                   % adds a frame around the code
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  %keywordstyle=\color{blue},      % keyword style
+  %commentstyle=\color{dkgreen},   % comment style
+  %stringstyle=\color{colorNavy},  % string literal style
+  morekeywords={*,with, where, from, union, all, as},
+  extendedchars=true,
+  literate={ä}{{\"{a}}}1 {ö}{{\"o}}1 {ü}{{\"u}}1,
+}
+%------------------------------------------------------------------------------
+
+
+% ------------------------- commands ------------------------------------------
+\newcommand{\todo}[1]{{\em \color{blue}[#1]}\marginpar{{\bf [!!!]}} }
+
+% shortcuts
+%\newcommand{\q}[1]{\mathrm{[#1]}}
+%------------------------------------------------------------------------------
+
+
+% ------------------------ exercisesheet class design settings ----------------
+\colorlet{maincolor}{red!70!black}
+
+\let\sffamily=\rmfamily
+
+\setsheetfont{sheet title}{\sffamily\bfseries\Huge}
+\setsheetfont{sheet topic}{\sffamily\bfseries\Huge\color{maincolor}}
+\setsheetfont{exercise label}{\sffamily\bfseries\color{maincolor}}
+%------------------------------------------------------------------------------
+
+
+% ------------------------- exercisesheet class text settings -----------------
+\setsheettemplate{sheet title (student)}{Mandatory assignment~\thesheet}
+
+% german translation
+%\setsheettemplate{sheet title (student)}{Übungszettel~\thesheet}
+%\setsheettemplate{exercise name}{Aufgabe}
+%\setsheettemplate{subexercise name}{Teilaufgabe}
+
+\sheetconf{
+    lecture   = Models of Concurrency,
+    lecturer  = Institute of Informatics,
+    semester  = Winter 2013,
+    author    = {Peter Müller 345643, Erwin Piper 349684},
+}
+%------------------------------------------------------------------------------
