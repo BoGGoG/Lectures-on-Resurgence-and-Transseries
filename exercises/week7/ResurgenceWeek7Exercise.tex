@@ -1,0 +1,114 @@
+\documentclass{exam}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amsthm} % Math packages for equations
+\usepackage{tikz}
+\usepackage{url}
+
+\DeclareMathOperator{\diff}{d}
+\DeclareMathOperator{\sign}{sgn}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calL}{\mathcal{L}}
+
+\title{Lectures on Resurgence and Trans-Series}
+\author{Marco Knipfer, University of Alabama}
+\date{Week 7, Version: \today}
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+    \setcounter{question}{5}
+    \question (\textsc{Warmup}: \textbf{Euler's Equation})\\
+    The differential equation
+    \begin{equation}
+        \phi'(z) - \phi(z) = -\frac{1}{z}\,,
+        \label{eq:euler}
+    \end{equation}
+    is not really called Euler's equation, but he studied it.
+    Here we are working in the $z\to \infty$ limit.
+
+    \begin{parts}
+        \part (\textbf{Perturbative Solution})\\
+        Show that the alternating (asymptotic) series
+        \begin{equation}
+            \tilde{\phi}(z) = \sum_{n=0}^{\infty} (-1)^n n!\, z^{-n-1}\,,
+            \label{eq:perturbEuler}
+        \end{equation}
+        solves eq.~(\ref{eq:euler}).
+
+        \part (\textbf{Borel Transformation and Analytic Continuation})\\
+        Perform the Borel transform
+        \begin{align}
+            \tilde{\phi}(z) &= \sum_{n = 0}^\infty a_n z^{-n-1} \in z^{-1}\mathbb{C}[[z^{-1}]]\,,\\
+            \hat{\phi}(z) &= \mathcal{B}[\tilde{\phi}][\zeta] = \sum_{n=0}^\infty \frac{a_n}{n!}\zeta^n\,.
+            \label{eq:borel}
+        \end{align}
+        on the perturbative solution~(\ref{eq:perturbEuler}).
+        Perform an analytic continuation of the Borel transform by sharply looking at it
+        and realizing that it's a geometric series. 
+        Where are the poles of the analytic continuation of the Borel transform?
+
+        \part (\textsc{Optional}: \textbf{Laplace transform})\\
+        Do the Laplace transform and find
+        \begin{equation}
+            \calL^0[\hat{\phi}](z) = e^{z} \Gamma(0;z)\,.
+        \end{equation}
+        The most general solution is $e^{z} \Gamma(0;z) + c e^{z}$,
+        which you can find by plugging the differential equation into Mathematica's \verb!DSolve!.
+        Why can't we find the $c e^{z}$ term?
+        Keep in mind that we are approximating around $z=\infty$.
+        
+    \end{parts}
+
+    \question (\textbf{Modification of Euler's Equation})\\
+    Let's change a sign,
+    \begin{equation}
+        \phi'(z) + \phi(z) = +\frac{1}{z}\,.
+        \label{eq:euler2}
+    \end{equation}
+    Then the asymptotic series changes to
+    \begin{equation}
+        \tilde{\phi}(z) = \sum_{n=0}^{\infty} n!\, z^{-n-1}\,,
+        \label{eq:perturbEuler2}
+    \end{equation}
+    which is no longer alternating.
+
+    \begin{parts}
+        \part (\textbf{Borel Transform and Analytic Continuation})\\
+        Perform the Borel transform as in eq.~(\ref{eq:borel}) and use your magic powers
+        to find the analytic continuation $\hat{\phi}(\zeta) = \frac{1}{1 - \zeta}$.
+        Where is the pole and will it matter for the Laplace transform?
+
+        \part (\textbf{Lateral Laplace Transform})\\
+        Perform a lateral Laplace transform
+        \begin{equation}
+            \calL^\theta[\hat{\phi}](z) = \int_0^{\infty e^{i\theta}} \diff\!\zeta\,e^{-z\zeta} \hat{\phi}(\zeta)\,,
+        \end{equation}
+        by first making a change of variables, $\zeta = e^{i\theta} \xi$, and then asking
+        Mathematica.
+
+        \part{ (\textbf{Ambiguity is Purely Imaginary})}\\
+        By \emph{e.g.}\@ using \verb!ReImPlot! in Mathematica, show that for $z\in \mathbb{R}$
+        the lateral Laplace transforms for $\frac{\pi}{2}>\theta>0$ and
+        $0>\theta>-\frac{\pi}{2}$ have the same real part, but differ in the imaginary part.
+        This is by the way a general feature of this Borel-Laplace stuff.
+
+        The imaginary part goes like $\sign(\theta) \pi e^{-z}$, thus it is non-analytic
+        and can't be ``touched'' by the perturbative expansion.
+
+        \part{ (\textbf{Median Summation})}\\
+        Simply perform a \emph{median resummation} (for $\theta = 0$) defined as
+        \begin{align*}
+            S^\text{med}_\theta &\sim \frac{1}{2}(S_{\theta^+} + S_{\theta^-})\,,\\
+            S_\theta \tilde{\phi} &= \calL^\theta[\calB[\tilde{\phi}]]\,,
+        \end{align*}
+        in order to get rid of the imaginary part.
+        Plot the Borel-Laplace (median resummed) solution, a truncation of the asymptotic series~(\ref{eq:perturbEuler2})
+        and the analytic solution from \verb!DSolve!.
+        
+    \end{parts}
+
+    
+\end{questions}
+
+\end{document}
