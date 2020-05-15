@@ -7,6 +7,7 @@
 \DeclareMathOperator{\diff}{d}
 \DeclareMathOperator{\sign}{sgn}
 \DeclareMathOperator*{\Res}{Res}
+\DeclareMathOperator*{\reg}{reg}
 \newcommand{\calB}{\mathcal{B}}
 \newcommand{\calL}{\mathcal{L}}
 
@@ -62,6 +63,7 @@
     \end{parts}
 
     \question (\textbf{Modification of Euler's Equation})\\
+    \label{q:modEuler}
     Let's change a sign,
     \begin{equation}
         \phi'(z) + \phi(z) = +\frac{1}{z}\,.
@@ -84,6 +86,7 @@
         Perform a lateral Laplace transform
         \begin{equation}
             \calL^\theta[\hat{\phi}](z) = \int_0^{\infty e^{i\theta}} \diff\!\zeta\,e^{-z\zeta} \hat{\phi}(\zeta)\,,
+            \label{eq:Laplace}
         \end{equation}
         by first making a change of variables, $\zeta = e^{i\theta} \xi$, and then asking
         Mathematica.
@@ -94,16 +97,16 @@
         $0>\theta>-\frac{\pi}{2}$ have the same real part, but differ in the imaginary part.
         This is by the way a general feature of this Borel-Laplace stuff.
 
-        Derive this ambiguity by the resiude theorem.
+        Derive this ambiguity by the residue theorem.
         The two directions enclose the singularity and the part at infinity vanishes,
         thus with the notation 
-        \begin{align*}
+        \begin{align}
             S_\theta \tilde{\phi} &\sim \calL^\theta[\calB[\tilde{\phi}]]\,,
+            \label{eq:directionalBorelLaplace}
             \intertext{one just has to calculate}
             (S_{0^+} - S_{0^-})\tilde{\phi}(z) &= - 2 \pi i \Res\limits_{\zeta \to 1}\left( \frac{e^{-z\zeta}}{1 - \zeta}\right)
-        \end{align*}
-        
-
+            \label{eq:perturbAmbSimplePole}
+        \end{align}
 
         You can see that this ambiguity is non-analytic and can't be
         ``touched'' by the perturbative expansion.
@@ -114,14 +117,38 @@
 
         \part{ (\textbf{Median Summation})}\\
         Simply perform a \emph{median resummation} (for $\theta = 0$) defined as
-        \begin{align*}
+        \begin{align}
             S^\text{med}_\theta &\sim \frac{1}{2}\left(S_{\theta^+} + S_{\theta^-}\right)\,,
-        \end{align*}
+        \end{align}
         in order to get rid of the imaginary part.
         Plot the Borel-Laplace (median resummed) solution, a truncation of the asymptotic series~(\ref{eq:perturbEuler2})
         and the analytic solution from \verb!DSolve!.
+
+        
         
     \end{parts}
+
+        \question (\textbf{Simple Singularity})\\
+        Our Borel transform in question~\ref{q:modEuler} had the form $\frac{1}{1 - \zeta}$.
+        Generally a function is said to have a \emph{simple singularity} at $\omega$ if 
+        close to the singularity it has the form
+        \begin{equation}
+            \hat{\phi}(\zeta) = \underbrace{\frac{\alpha}{2 \pi i (\zeta - \omega)}}_{\text{simple pole}} + 
+            \frac{1}{2 \pi i}\underbrace{\hat{\Phi}(\zeta)}_\text{minor}\ln(\zeta - \omega)
+            + \reg(\zeta - \omega)\,,
+        \end{equation}
+        where $\alpha \in \mathbb{C}$ is called the \emph{residue}, $\hat{\Phi}(\zeta)$ is a holomorphic
+        function called the \emph{minor} and $\reg$ is a regular term close to $\omega$.
+
+        For $\arg(\omega) = 0$, \emph{i.e.}\@ $\omega \in \mathbb{R}^+$, calculate
+        \begin{equation}
+            (S_{0^+} - S_{0^-})\tilde{\phi}(\zeta)
+        \end{equation}
+        by using definitions~(\ref{eq:directionalBorelLaplace}),~(\ref{eq:Laplace})
+        and integrating around the simple singularity.
+        Remember that $\ln(\zeta-\omega)$ has a branch cut and just above the real line the argument of the log is $(\zeta - \omega)$,
+        whereas just below the real line it is $(\zeta - \omega)e^{2\pi i}$.
+        You should recover something like~(\ref{eq:perturbAmbSimplePole}) plus a term containing the minor.
 
     
 \end{questions}
