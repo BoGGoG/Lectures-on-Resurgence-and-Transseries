@@ -89,7 +89,9 @@
 
         \part (\textbf{Full asymptotic series for the Airy function})\\
         \label{part:AiryFunction}
-        The full asymptotic series is
+        The full asymptotic series\footnote{The full function is $\Ai(x)$, the leading asymptotic behavior is
+        $\Ai(x)\sim \frac{1}{2\sqrt{\pi}} \frac{e^{-\frac{2}{3} x^{\frac{3}{2}}}}{x^{1 /4}}$ and the full
+        asymptotic series is $Z_{Ai}$.} is
         \begin{align}
             Z_{\Ai}(x) &\sim \frac{1}{2\sqrt{\pi}} \frac{e^{- \frac{2}{3} x^{\frac{3}{2}}}}{x^{1 / 4}}
             \sum_{n=0}^\infty a_n x^{-\frac{3}{2}n}\,,
@@ -105,7 +107,7 @@
         \end{equation}
         and find the ``instanton action'' $A$.
 
-        \part (\textbf{The Bairy function})
+        \part (\textbf{The Bairy function})\\
         There is another independent solution that we just call the ``Bairy function\footnote{
         I know what you're thinking. No, there is no $\mathrm{Hi}(x)$.}'' $\Bi(x)$
         and its formal power series solution around $x=\infty$ is
@@ -124,6 +126,21 @@
             e^{A x^{\frac{3}{2}}}\,,
         \end{equation}
         where $A$ is the instanton action from (\ref{part:AiryFunction}).
+        
+        \part (\textbf{Stokes Lines of the Bairy function})\\
+        Write $x=r e^{i \phi}$. 
+        Stokes lines appear where the real part of the exponential is zero.
+        Find the Stokes lines for $\Bi(x)$.
+        The leading asymptotic behavior 
+        \begin{equation}
+            \Bi(x) \sim \frac{1}{\sqrt{\pi}} \frac{1}{x^{1 / 4}} e^{\frac{2}{3} x^{\frac{3}{2}}}\,,\quad
+            x\to \infty,\ |\arg x| < \frac{\pi}{3}\,,
+        \end{equation}
+        is good only on the Stokes wedge $|\arg x| < \frac{\pi}{3}$.
+        Thus in general one cannot just analytically continue the leading asymptotic behavior through Stokes lines.
+        It is however possible to continue the full asymptotic series past Stokes lines!
+        On the next exercise sheet we will find out that even though $\Ai$ is good until
+        $\arg x = \pi$ even though it also has Stokes lines at $|\arg x| = \frac{\pi}{3}$.
         
     \end{parts}
     
