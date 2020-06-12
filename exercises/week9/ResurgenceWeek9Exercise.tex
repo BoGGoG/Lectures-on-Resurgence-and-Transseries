@@ -1,0 +1,133 @@
+\documentclass{exam}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amsthm} % Math packages for equations
+\usepackage{tikz}
+\usepackage{url}
+
+\DeclareMathOperator{\diff}{d}
+\DeclareMathOperator{\sign}{sgn}
+\DeclareMathOperator*{\Res}{Res}
+\DeclareMathOperator*{\reg}{reg}
+\DeclareMathOperator*{\Ai}{Ai}
+\DeclareMathOperator*{\Bi}{Bi}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calL}{\mathcal{L}}
+
+\title{Lectures on Resurgence and Trans-Series}
+\author{Marco Knipfer, University of Alabama}
+\date{Week 8, Version: \today}
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+    \setcounter{question}{7}
+    \question (\textbf{The Airy Equation: WKB})\\
+    The Airy equation
+    \begin{equation}
+        y''(x) = x y(x)\,,
+        \label{eq:Airy}
+    \end{equation}
+    has a transseries solution which we are going to develop here.
+    \begin{parts}
+        \part (\textbf{Neglecting the wrong term})\\
+        We are interested in the asymptotics as $x\to\infty$.
+        Because the Airy equation has an irregular singular point at $x=\infty$, the ansatz is
+        \begin{equation}
+            y(x) = A e^{S(x)}\,.
+            \label{eq:trafo}
+        \end{equation}
+        Then the Airy equation~(\ref{eq:Airy}) becomes
+        \begin{equation}
+            S'' + (S')^2 = x\,.
+            \label{eq:AiryS}
+        \end{equation}
+        Try neglecting $(S')^2$, \emph{i.e.}\ assuming $(S')^2\ll x, S''$ as $x \to \infty$.
+        Then we would write equation~(\ref{eq:AiryS}) as $S'' \sim x$ as $x\to\infty$.
+        Calculate $S$ in this approximation and show that the assumption is not consistent.
+
+        \part (\textbf{WKB dominant part})\\
+        Neglect $S''$, \emph{i.e.}\ assume $S'' \ll x, (S')^2$ as $(x\to\infty)$. 
+        Calculate $S(x)$ in this approximation and show that it is consistent with the assumption.
+
+        As bonus you can also try neglecting $x$. 
+        Generally only one version will be consistent.
+
+        \part (\textbf{What is usually called WKB})\\
+        You should now have $S\sim \pm \frac{2}{3} x^{\frac{3}{2}}$.
+        One of the few things one generally cannot do with an asymptotic expression like this is to
+        exponentiate it, which is exactly what we need, see eq.~(\ref{eq:trafo}).
+        We first have to calculate more terms for $S$.
+        This can be done by writing
+        \begin{equation}
+            S(x) = \pm \frac{2}{3} x^{\frac{3}{2}} + S_2(x)\,,
+            \label{eq:S_2}
+        \end{equation}
+        with $S_2(x) \ll x^{\frac{3}{2}}$, $S_2'(x)\ll \sqrt{x} $, $S_2''(x) \ll \frac{1}{\sqrt{x}}$ as $x\to\infty$.
+        Generally one can integrate asymptotic relations, but not differentiate (try $\sin(x^{25})$).
+        Here however it works because $S$ comes from a differential equation.
+        Notice there is an equals sign in (\ref{eq:S_2}), no asymptotic.
+
+        Plug $S(x)$ from (\ref{eq:S_2}) into (\ref{eq:AiryS}), find the right terms to throw away and
+        calculate $S_2(x)$ asymptotically.
+        Show that your solution is consistent with the assumptions.
+
+        \part (\textbf{Next Term (last one, I promise!)})\\
+        You should now have $S \sim \pm \frac{2}{3} x^{\frac{3}{2}} - \frac{1}{4} \ln(x)$.
+        Again replace the asymptotic sign with an equal sign and write
+        \begin{equation}
+            S(x) = \pm \frac{2}{3} x^{\frac{3}{2}} - \frac{1}{4} \ln(x) + S_3(x)\,,
+        \end{equation}
+        where $S_3(x)$ is much smaller than the other terms as $x\to\infty$.
+        Do the same as above and calculate $S_3(x)$ asymptotically.
+        Show that what you did is consistent.
+
+        Since $S_3(x)$ goes to zero as $x\to\infty$ we can now exponentiate:
+        \begin{equation}
+            y \sim C_\pm \frac{e^{\pm\frac{2}{3}x^{\frac{3}{2}}}}{x^{1 / 4}} \left( 1 + S_3(x) + \ldots\right)\,.
+        \end{equation}
+
+        \part (\textbf{Full asymptotic series for the Airy function})\\
+        \label{part:AiryFunction}
+        The full asymptotic series is
+        \begin{align}
+            Z_{\Ai}(x) &\sim \frac{1}{2\sqrt{\pi}} \frac{e^{- \frac{2}{3} x^{\frac{3}{2}}}}{x^{1 / 4}}
+            \sum_{n=0}^\infty a_n x^{-\frac{3}{2}n}\,,
+            \intertext{with}
+            a_n &= \frac{1}{2\pi} \left(- \frac{3}{4}\right)^n \frac{\Gamma(n+\frac{5}{6}) \Gamma(n + \frac{1}{6})}{n!}\,.
+        \end{align}
+        This is the Airy function\footnote{The Airy function is one solution of the Airy equation.}
+        and the prefactor $\frac{1}{2 \sqrt{\pi} }$ can be seen as the definition of this particular solution.
+
+        Show that the coefficients $a_n$ grow as
+        \begin{equation}
+            a_n \sim A^{-n} n!\,,
+        \end{equation}
+        and find the ``instanton action'' $A$.
+
+        \part (\textbf{The Bairy function})
+        There is another independent solution that we just call the ``Bairy function\footnote{
+        I know what you're thinking. No, there is no $\mathrm{Hi}(x)$.}'' $\Bi(x)$
+        and its formal power series solution around $x=\infty$ is
+        \begin{equation}
+            Z_{\Bi}(x) \sim \frac{1}{\sqrt{\pi}} \frac{e^{+ \frac{2}{3} x^{\frac{3}{2}}}}{x^{1 / 4}}
+            \sum_{n=0}^\infty (-1)^n a_n x^{-\frac{3}{2}n}\,.
+        \end{equation}
+        Notice the different prefactor and that the series is not oscillating ($(-1)^n$ is also in the coefficients $a_n$).
+
+        The general transseries solution to the Airy equation~(\ref{eq:Airy}) is now
+        \begin{equation}
+            C_1 Z_{\Ai} (x) + C_2 Z_{Bi}(x)\,.
+        \end{equation}
+        Show that the \emph{relative exponential weight} between the two solutions is
+        \begin{equation}
+            e^{A x^{\frac{3}{2}}}\,,
+        \end{equation}
+        where $A$ is the instanton action from (\ref{part:AiryFunction}).
+        
+    \end{parts}
+    
+\end{questions}
+
+
+\end{document}
