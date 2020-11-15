@@ -39,7 +39,7 @@
 
 \title{On the Stokes Jumps When Crossing the Singularity in the Borel Plane}
 \date{\today}
-\author{Marco Knipfer, \\ University of Alabama}
+\author{Marco Knipfer \\ University of Alabama}
 \begin{document}
 \maketitle
 Last lecture we had the question why ``crossing'' the singularity line $\theta$ in the Borel plane $\zeta$
@@ -56,19 +56,18 @@ Remember the basic definitions of the Borel transform and Laplace transform (inv
 	S^\theta[\tilde{\phi}](x) &\equiv \mathcal{L}^\theta[\mathcal{B}[\tilde{\phi}]](x)\,, &\text{Lateral Borel Resummation}
 \end{align}
 
-Let's say we have an asymptotic series whose Borel transform has a simple pole\footnote{simple poles
-are rather boring because they don't introduce a new instanton sector, we will adress this later} on the positive
-real axis at $\zeta = A$.
+Let's say we have an asymptotic series whose Borel transform has a simple pole on the positive real axis at $\zeta = A$.
 We can either take $\theta = 0^-$ or $\theta = 0^+$ to do the Laplace transform, see figure~\ref{fig:laplaceContours}.
 \begin{figure}
 	\centering
 	  \includegraphics[width=0.8\linewidth]{laplace.pdf}
-	  \caption{Contours of the different Laplace integrals.}
+	  \caption{Borel plane $\zeta$: The singularity is at the red dot and the
+	  	blue and green lines are the contours of the different Laplace integrals. }
 	  \label{fig:laplaceContours}
 \end{figure}
 The difference between both is simply
 \begin{equation}
-	\left( S^{0^-} - S^{0^+} \right)[\tilde{\phi}](x) = \underset{\zeta\to A}{\mathrm{Res}}(\hat\phi) e^{- A x}
+	\left( S^{0^-} - S^{0^+} \right)[\tilde{\phi}](x) = 2 \pi i \underset{\zeta\to A}{\mathrm{Res}}(\hat\phi) e^{- A x}
 	= k e^{-Ax}\,,
 	\label{eq:ambiguity}
 \end{equation}
@@ -81,17 +80,18 @@ and an instanton sector $\phi_1$ which is just a constant.
 Now, the general solution would consist of a linear combiantion of the perturbative series and the
 instanton sector,
 \begin{equation}
-	Z(x) \sim \sigma_0 \tilde\phi(x) + \sigma_1 k e^{-Ax}\,.
+	Z(x, \sigma_1, \sigma_2) \sim \sigma_0 \tilde\phi(x) + \sigma_1 k e^{-Ax}\,.
 \end{equation}
 
 The ``instanton counting parameters'' $\sigma_0$ and $\sigma_1$ are determined by boundary conditions or other
-considerations.
+considerations\footnote{For example one condition could be that the function should be real. Then $\sigma_1 = 0$ in
+this example, since the ``perturbative ambiguity'' with only a pole is purely imaginary.}.
 
 \section{Rotating in the $x$-Plane}
 Say our boundary conditions have fixed $\sigma_0$ and $\sigma_1$ in the bottom right quadrant
 $\Re(x)>0$,$\Im(x)<0$, then the resummed expansion in this region has the form
 \begin{equation}
-	Z_-(e^{-i\epsilon}x) \sim \sigma_0 S_{0^-}[\tilde\phi](e^{-i\epsilon}x) + \sigma_1 k e^{-A e^{-i\epsilon}x}\,,
+	Z(e^{-i\epsilon}x) \sim \sigma_0 S_{0^-}[\tilde\phi](e^{-i\epsilon}x) + \sigma_1 k e^{-A e^{-i\epsilon}x}\,,
 		\quad x\in\mathbb{R}\to \infty
 \end{equation}
 where by $x e^{-i\epsilon}$ we make clear that we are talking about just below the real axis.
@@ -122,16 +122,18 @@ Thus in the transseries
 \begin{align}
 	&Z(e^{-i\epsilon}x, \sigma_0, \sigma_1) \sim \sigma_0 \tilde\phi(x) + \sigma_1 e^{-Ax}\,.
 	\intertext{we add the term (\ref{eq:ambiguity})}
-	&Z(e^{+i\epsilon}x, \sigma_0, \sigma_1) \sim \sigma_0 \tilde\phi(x) + (\sigma_1 + k) e^{-Ax}\,.
+	&Z(e^{+i\epsilon}x, \sigma_0, \sigma_1) \sim \sigma_0 \tilde\phi(x) + (\sigma_1 + k \sigma_0 ) e^{-Ax}\,.
 \end{align}
 We have arived at the formula
 \begin{equation}
-Z(e^{+i\epsilon}x, \sigma_0, \sigma_1)  = Z(e^{-i\epsilon}x, \sigma_0, \sigma_1 + k)
+Z(e^{+i\epsilon}x, \sigma_0, \sigma_1)  = Z(e^{-i\epsilon}x, \sigma_0, \sigma_1 + k \sigma_0)
 \end{equation}
 
 \section{Details that are not clear to me yet}
 I am not sure about $\delta$ and $\epsilon$ in above argument.
 Probably one has to chose them the same per definition, but maybe there is some more structure that
 I am not seing right now.
+
+Also I am not aure about various statements I made above.
 
 \end{document}
